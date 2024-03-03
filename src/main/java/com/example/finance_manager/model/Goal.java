@@ -1,9 +1,6 @@
 package com.example.finance_manager.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,7 +8,6 @@ import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 import java.util.Date;
 
-// Travel, Realestate, Car, Boat
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -23,6 +19,9 @@ public class Goal {
   public Long id;
 
   private BigDecimal cost;
-
   private Date dateOfOccurrence;
+  private String description;
+
+  @Enumerated(value = EnumType.STRING)
+  private GoalType goalType;
 }
