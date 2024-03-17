@@ -27,5 +27,6 @@ public class Person {
   private List<Goal> goals;
   @OneToMany
   private List<Income> incomes;
-  // Costs, Liabilities, Expenses
+  @OneToMany
+  private List<Cost> costs;
 }

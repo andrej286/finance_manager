@@ -11,5 +11,5 @@ public enum GoalType {
   BUSINESS,
   FAMILY,
   CHARITY,
-  OTHER
+  OTHER,
 }

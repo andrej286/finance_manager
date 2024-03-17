@@ -1,27 +1,29 @@
 package com.example.finance_manager.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
-// Car, House, Painting, Jewelry
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Entity
-public class Asset {
+public class Cost {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  public Long id;
+  private Long id;
+
+  private BigDecimal amount;
 
   private String description;
 
-  private BigDecimal value;
+  private Date dateOfPayment;
+
+  @Enumerated(value = EnumType.STRING)
+  private CostType costType;
 }
