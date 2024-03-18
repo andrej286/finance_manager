@@ -16,19 +16,19 @@ public class CostController {
   private CostService costService;
 
   @GetMapping
-  public List<Cost> findGoals() {
+  public List<Cost> findCosts() {
 
     return costService.fetchCosts();
   }
 
   @PostMapping
-  public void createGoal(@RequestBody Cost cost) {
+  public void createCost(@RequestBody Cost cost) {
 
     costService.createCost(cost);
   }
 
   @DeleteMapping("/{id}")
-  public void deleteGoal(@PathVariable Long id) {
+  public void deleteCost(@PathVariable Long id) {
 
     costService.deleteCost(id);
   }
