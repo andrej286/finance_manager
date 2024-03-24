@@ -21,6 +21,7 @@ public class Income {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   public Long id;
 
+  private String name;
   private BigDecimal annualMonthlyValue;
   private Date startDate;
   private Date terminationDate;
