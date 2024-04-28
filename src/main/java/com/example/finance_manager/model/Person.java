@@ -20,6 +20,7 @@ public class Person {
 
   private String name;
   private String surname;
+  private String email;
   private Date dateOfBirth;
   @OneToMany
   private List<Asset> assets;

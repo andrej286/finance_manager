@@ -31,7 +31,7 @@ public class SecurityConfig {
                 .anyRequest().authenticated()
         )
                 .oauth2ResourceServer(c -> c.opaqueToken(Customizer.withDefaults()));
-        ;
+
         return http.build();
     }
 
