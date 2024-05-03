@@ -26,4 +26,5 @@ public class Income {
   private Date startDate;
   private Date terminationDate;
   private BigDecimal interestRate;
+  // TODO: 5/3/2024 : Add description.
 }

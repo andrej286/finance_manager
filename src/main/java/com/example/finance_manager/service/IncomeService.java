@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -26,5 +27,18 @@ public class IncomeService {
   public List<Income> fetchIncomes() {
 
     return incomeRepository.findAll();
+  }
+
+  public void updateIncome(Long id, Income updatedIncome) {
+    Optional<Income> existingIncomeOptional = incomeRepository.findById(id);
+    if (existingIncomeOptional.isPresent()) {
+      Income existingIncome = existingIncomeOptional.get();
+      existingIncome.setName(updatedIncome.getName());
+      existingIncome.setAnnualMonthlyValue(updatedIncome.getAnnualMonthlyValue());
+      existingIncome.setStartDate(updatedIncome.getStartDate());
+      existingIncome.setTerminationDate(updatedIncome.getTerminationDate());
+      existingIncome.setInterestRate(updatedIncome.getInterestRate());
+      incomeRepository.save(existingIncome);
+    }
   }
 }
