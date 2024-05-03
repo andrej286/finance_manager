@@ -34,6 +34,7 @@ public class IncomeService {
     if (existingIncomeOptional.isPresent()) {
       Income existingIncome = existingIncomeOptional.get();
       existingIncome.setName(updatedIncome.getName());
+      existingIncome.setDescription(updatedIncome.getDescription());
       existingIncome.setAnnualMonthlyValue(updatedIncome.getAnnualMonthlyValue());
       existingIncome.setStartDate(updatedIncome.getStartDate());
       existingIncome.setTerminationDate(updatedIncome.getTerminationDate());

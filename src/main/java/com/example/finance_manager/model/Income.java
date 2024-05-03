@@ -22,9 +22,9 @@ public class Income {
   public Long id;
 
   private String name;
+  private String description;
   private BigDecimal annualMonthlyValue;
   private Date startDate;
   private Date terminationDate;
   private BigDecimal interestRate;
-  // TODO: 5/3/2024 : Add description.
 }
