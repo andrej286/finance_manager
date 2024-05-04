@@ -30,6 +30,7 @@ public class IncomeService {
   }
 
   public void updateIncome(Long id, Income updatedIncome) {
+
     Optional<Income> existingIncomeOptional = incomeRepository.findById(id);
     if (existingIncomeOptional.isPresent()) {
       Income existingIncome = existingIncomeOptional.get();

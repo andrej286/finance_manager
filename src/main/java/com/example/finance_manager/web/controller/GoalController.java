@@ -32,4 +32,9 @@ public class GoalController {
 
     goalService.deleteGoal(id);
   }
+
+  @PutMapping("/{id}")
+  public void updateGoal(@PathVariable Long id, @RequestBody Goal updatedGoal) {
+    goalService.updateGoal(id, updatedGoal);
+  }
 }
