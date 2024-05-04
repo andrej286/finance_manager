@@ -32,4 +32,9 @@ public class CostController {
 
     costService.deleteCost(id);
   }
+
+  @PutMapping("/{id}")
+  public void updateCost(@PathVariable Long id, @RequestBody Cost updatedCost) {
+    costService.updateCost(id, updatedCost);
+  }
 }

@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -26,5 +27,19 @@ public class CostService {
   public List<Cost> fetchCosts() {
 
     return costRepository.findAll();
+  }
+
+  public void updateCost(Long id, Cost updatedCost) {
+
+    Optional<Cost> existingCostOptional = costRepository.findById(id);
+    if (existingCostOptional.isPresent()) {
+      Cost existingCost = existingCostOptional.get();
+      existingCost.setName(updatedCost.getName());
+      existingCost.setDescription(updatedCost.getDescription());
+      existingCost.setAmount(updatedCost.getAmount());
+      existingCost.setDateOfPayment(updatedCost.getDateOfPayment());
+      existingCost.setCostType(updatedCost.getCostType());
+      costRepository.save(existingCost);
+    }
   }
 }

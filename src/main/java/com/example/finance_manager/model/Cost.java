@@ -18,10 +18,9 @@ public class Cost {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  private BigDecimal amount;
-
+  private String name;
   private String description;
-
+  private BigDecimal amount;
   private Date dateOfPayment;
 
   @Enumerated(value = EnumType.STRING)
