@@ -18,9 +18,10 @@ public class Goal {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   public Long id;
 
-  private BigDecimal cost;
-  private Date dateOfOccurrence;
+  private String name;
   private String description;
+  private BigDecimal amount;
+  private Date dateOfOccurrence;
 
   @Enumerated(value = EnumType.STRING)
   private GoalType goalType;
