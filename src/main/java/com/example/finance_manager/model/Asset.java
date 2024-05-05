@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 // Car, House, Painting, Jewelry
 @AllArgsConstructor
@@ -21,7 +22,9 @@ public class Asset {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   public Long id;
 
+  private String name;
   private String description;
-
   private BigDecimal value;
+  private BigDecimal interestRate;
+  private Date dateOfAcquirement;
 }
