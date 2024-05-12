@@ -32,7 +32,7 @@ public class AuthController {
     @GetMapping("/auth/url")
     public ResponseEntity<UrlDto> auth() {
         String url = new GoogleAuthorizationCodeRequestUrl(clientId,
-                "http://localhost:3000/home",
+                "http://localhost:3000/confirmation",
                 Arrays.asList(
                         "email",
                         "profile",
@@ -51,7 +51,7 @@ public class AuthController {
                     clientId,
                     clientSecret,
                     code,
-                    "http://localhost:3000/home"
+                    "http://localhost:3000/confirmation"
             ).execute().getAccessToken();
         } catch (IOException e) {
             System.err.println(e.getMessage());
