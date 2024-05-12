@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 import java.util.Date;
 
-// Car, House, Painting, Jewelry
 @AllArgsConstructor
 @NoArgsConstructor
 @Data

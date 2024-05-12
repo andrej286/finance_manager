@@ -32,4 +32,9 @@ public class AssetController {
 
     assetService.deleteAsset(id);
   }
+
+  @PutMapping("/{id}")
+  public void updateAsset(@PathVariable Long id, @RequestBody Asset updatedAsset) {
+    assetService.updateAsset(id, updatedAsset);
+  }
 }
