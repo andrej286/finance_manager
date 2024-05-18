@@ -15,14 +15,17 @@ public class PersonController {
 
   private PersonService personService;
 
-  @GetMapping
-  public void createPerson(@RequestBody Person person) {
+  @PostMapping("/check-in")
+  public Person handleCheckIn(
+          @AuthenticationPrincipal(expression = "attributes.get('email')") String email,
+          @AuthenticationPrincipal(expression = "attributes.get('name')") String name
+  ) {
 
-    personService.createPerson(person);
+    return personService.createPersonIfNotExist(email, name);
   }
 
   @GetMapping("/info")
-  public PersonInfo createPerson(
+  public PersonInfo fetchPersonInfo(
     @AuthenticationPrincipal(expression = "attributes.get('email')") String email,
     @AuthenticationPrincipal(expression = "attributes.get('name')") String name
   ) {
