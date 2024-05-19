@@ -1,5 +1,6 @@
 package com.example.finance_manager.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,12 +23,31 @@ public class Person {
   private String surname;
   private String email;
   private Date dateOfBirth;
-  @OneToMany
+
+  @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
+  @JsonManagedReference
   private List<Asset> assets;
-  @OneToMany
+
+  @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
+  @JsonManagedReference
   private List<Goal> goals;
-  @OneToMany
+
+  @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
+  @JsonManagedReference
   private List<Income> incomes;
-  @OneToMany
+
+  @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
+  @JsonManagedReference
   private List<Cost> costs;
+
+  @Override
+  public String toString() {
+    return "Person{" +
+            "id=" + id +
+            ", name='" + name + '\'' +
+            ", surname='" + surname + '\'' +
+            ", email='" + email + '\'' +
+            ", dateOfBirth=" + dateOfBirth +
+            '}';
+  }
 }

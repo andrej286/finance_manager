@@ -1,9 +1,7 @@
 package com.example.finance_manager.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,4 +25,23 @@ public class Income {
   private Date startDate;
   private Date terminationDate;
   private BigDecimal interestRate;
+
+  @ManyToOne
+  @JoinColumn(name = "person_id")
+  @JsonBackReference
+  private Person person;
+
+  @Override
+  public String toString() {
+    return "Income{" +
+            "id=" + id +
+            ", name='" + name + '\'' +
+            ", description='" + description + '\'' +
+            ", annualMonthlyValue=" + annualMonthlyValue +
+            ", startDate=" + startDate +
+            ", terminationDate=" + terminationDate +
+            ", interestRate=" + interestRate +
+            ", person=" + person +
+            '}';
+  }
 }

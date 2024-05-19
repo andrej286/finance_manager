@@ -18,26 +18,22 @@ public class IncomeController {
 
   @GetMapping
   public List<Income> findIncomes(@AuthenticationPrincipal(expression = "attributes.get('email')") String email) {
-
-    // TODO: 4/29/2024: configure fetching of the incomes through the email.
-
-    return incomeService.fetchIncomes();
+    return incomeService.fetchIncomes(email);
   }
 
   @PostMapping
-  public void createIncome(@RequestBody Income income) {
-
-    incomeService.createIncome(income);
+  public void createIncome(@AuthenticationPrincipal(expression = "attributes.get('email')") String email, @RequestBody Income income) {
+    incomeService.createIncome(income, email);
   }
 
   @DeleteMapping("/{id}")
-  public void deleteIncome(@PathVariable Long id) {
-
-    incomeService.deleteIncome(id);
+  public void deleteIncome(@AuthenticationPrincipal(expression = "attributes.get('email')") String email, @PathVariable Long id) {
+    incomeService.deleteIncome(id, email);
   }
 
   @PutMapping("/{id}")
-  public void updateIncome(@PathVariable Long id, @RequestBody Income updatedIncome) {
-    incomeService.updateIncome(id, updatedIncome);
+  public void updateIncome(@AuthenticationPrincipal(expression = "attributes.get('email')") String email, @PathVariable Long id, @RequestBody Income updatedIncome) {
+    incomeService.updateIncome(id, updatedIncome, email);
   }
 }
+

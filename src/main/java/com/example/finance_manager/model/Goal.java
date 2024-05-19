@@ -1,5 +1,6 @@
 package com.example.finance_manager.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,4 +26,21 @@ public class Goal {
 
   @Enumerated(value = EnumType.STRING)
   private GoalType goalType;
+
+  @ManyToOne
+  @JoinColumn(name = "person_id")
+  @JsonBackReference
+  private Person person;
+
+  @Override
+  public String toString() {
+    return "Goal{" +
+            "id=" + id +
+            ", name='" + name + '\'' +
+            ", description='" + description + '\'' +
+            ", amount=" + amount +
+            ", dateOfOccurrence=" + dateOfOccurrence +
+            ", goalType=" + goalType +
+            '}';
+  }
 }

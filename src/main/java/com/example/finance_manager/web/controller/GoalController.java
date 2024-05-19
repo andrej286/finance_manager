@@ -3,6 +3,7 @@ package com.example.finance_manager.web.controller;
 import com.example.finance_manager.model.Goal;
 import com.example.finance_manager.service.GoalService;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,25 +17,22 @@ public class GoalController {
   private GoalService goalService;
 
   @GetMapping
-  public List<Goal> findGoals() {
-
-    return goalService.fetchGoals();
+  public List<Goal> findGoals(@AuthenticationPrincipal(expression = "attributes.get('email')") String email) {
+    return goalService.fetchGoals(email);
   }
 
   @PostMapping
-  public void createGoal(@RequestBody Goal goal) {
-
-    goalService.createGoal(goal);
+  public void createGoal(@AuthenticationPrincipal(expression = "attributes.get('email')") String email, @RequestBody Goal goal) {
+    goalService.createGoal(goal, email);
   }
 
   @DeleteMapping("/{id}")
-  public void deleteGoal(@PathVariable Long id) {
-
-    goalService.deleteGoal(id);
+  public void deleteGoal(@PathVariable Long id, @AuthenticationPrincipal(expression = "attributes.get('email')") String email) {
+    goalService.deleteGoal(id, email);
   }
 
   @PutMapping("/{id}")
-  public void updateGoal(@PathVariable Long id, @RequestBody Goal updatedGoal) {
-    goalService.updateGoal(id, updatedGoal);
+  public void updateGoal(@PathVariable Long id, @RequestBody Goal updatedGoal, @AuthenticationPrincipal(expression = "attributes.get('email')") String email) {
+    goalService.updateGoal(id, updatedGoal, email);
   }
 }
